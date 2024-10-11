@@ -2,6 +2,13 @@
     border-radius: $radius;
 }
 
+@mixin flex_box_custom( $x, $y, $gap: 10px ) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+    gap: $gap;
+}
+
 @mixin btn($w, $h, $radius,  $color: #fff) {
     outline: none;
     border: 1px solid #e1e1e1;
