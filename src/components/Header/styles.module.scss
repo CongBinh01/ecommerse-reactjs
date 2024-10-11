@@ -1,12 +1,21 @@
 @import '@styles/mixin.module.scss';
 @import '@styles/variable.module.scss';
 
+.container{
+    @include flex_box_custom(center, center, 0px);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
 .containerHeader {
     display: flex;
+    width: 1250px;
     height: 83px;
     align-items: center;
-    justify-content: space-around;
-    background-color: bisque;
+    justify-content: space-between;
 
 }
 
@@ -19,7 +28,7 @@
 
 }
 .containerMenu {
-    @include flex_box_custom(center, center, 20px);
+    @include flex_box_custom(center, center, 40px);
 
 }
 

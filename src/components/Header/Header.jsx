@@ -10,8 +10,8 @@ import cartIcon from "@icons/svgs/cartIcon.svg"
 function MyHeader() {
   
   /*detrustoring */
-  const {containerBoxIcon, containerMenu, containerHeader, containerBox} = styles;
-  return <div>
+  const {container, containerBoxIcon, containerMenu, containerHeader, containerBox} = styles;
+  return <div className={container}>
     <div className={containerHeader}>
       
       <div className={containerBox}>
