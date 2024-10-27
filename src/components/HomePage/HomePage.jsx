@@ -1,22 +1,36 @@
 import MyHeader from '@components/Header/Header'
 import Banner from '@components/Banner/Banner'
-import styles from './styles.module.scss'
 import Info from '@components/Info/Info';
 import AdvanceHeadling from '@components/AdvanceHeadling/AdvanceHeadling';
 import HeadingListProducts from '@components/HeadingListProduct/HeadingListProducts';
-
+import { useEffect, useState } from 'react';
+import { getProducts } from '@/apis/productsService';
+import PopularProduct from '@components/PopularProduct/PopularProduct';
 
 function HomePage() {
-    const { container } = styles
+
+    //luu gia tri tra ve
+    const [listProducts, setListProducts] = useState([]);
+
+    useEffect(() => {
+        getProducts().then((res) => {
+            setListProducts(res.contents);
+        });
+    }, []);
+
+
     return (
         <div>
-           <div className={ container }>
                 <MyHeader /> 
                 <Banner />
                 <Info />
                 <AdvanceHeadling />
-                <HeadingListProducts />
-           </div>
+                <HeadingListProducts data={listProducts.slice(0, 2)} />
+                <PopularProduct data={listProducts.slice(2, listProducts.length)} />
+                <div
+                    style={{height: '200px'
+                    }}
+                ></div>
         </div>
     );
 }
