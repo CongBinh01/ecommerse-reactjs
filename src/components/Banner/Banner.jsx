@@ -1,5 +1,6 @@
 import Button from '../Button/Button';
 import styles from './styles.module.scss';
+
 function Banner() {
     const { container, content, title, des } = styles;
     return (
@@ -10,9 +11,17 @@ function Banner() {
                     Make yours celebrations even more special this years with
                     beautiful.
                 </div>
-                <Button content={'Go to shop'} />
+
+                <div
+                    style={{
+                        width: '172px'
+                    }}
+                >
+                    <Button content={'Go to shop'} />
+                </div>
             </div>
         </div>
     );
 }
+
 export default Banner;
