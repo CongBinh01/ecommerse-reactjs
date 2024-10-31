@@ -9,9 +9,9 @@ function App() {
     //Higher Component boc tat ca Component vao ben trong
    <BrowserRouter>
       <Suspense fallback={ <div>Loading...</div>}>
-        <Routes>
+          <Routes>  
         {
-          routers.map((item, index) => {
+              routers.map((item, index) => {
               return <Route key={index} 
               path={item.path} 
               //Khi component dang duoc goi trong trang thai loading
