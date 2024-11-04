@@ -3,9 +3,15 @@ import Menu from './Menu/Menu';
 import { dataBoxIcon, dataMenu } from './constants';
 import styles from './styles.module.scss';
 import Logo from '@icons/images/Logo-retina.png';
+import { TfiReload } from 'react-icons/tfi';
+import { BsHeart } from 'react-icons/bs';
+import { PiShoppingCart } from 'react-icons/pi';
 import useScrollHandling from '@/hooks/useScrollHandling';
-import { useState, useEffect, useContext} from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { SideBarContext } from '@/contexts/SideBarProvider';
 
 function MyHeader() {
     const {
@@ -18,8 +24,10 @@ function MyHeader() {
         topHeader
     } = styles;
 
+
     const { scrollPosition } = useScrollHandling();
     const [fixedPosition, setFixedPosition] = useState(false);
+    const { setIsOpen, setType } = useContext(SideBarContext);
 
     const handleOpenSideBar = (type) => {
         setIsOpen(true);
@@ -70,6 +78,27 @@ function MyHeader() {
                                 <Menu content={item.content} href={item.href} />
                             );
                         })}
+                    </div>
+
+                    <div className={containerBoxIcon}>
+                        <TfiReload
+                            style={{
+                                fontSize: '20px'
+                            }}
+                            onClick={() => handleOpenSideBar('compare')}
+                        />
+                        <BsHeart
+                            style={{
+                                fontSize: '20px'
+                            }}
+                            onClick={() => handleOpenSideBar('wishlist')}
+                        />
+                        <PiShoppingCart
+                            style={{
+                                fontSize: '25px'
+                            }}
+                            onClick={() => handleOpenSideBar('cart')}
+                        />
                     </div>
                 </div>
             </div>
