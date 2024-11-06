@@ -1,24 +1,42 @@
-.box {
-    margin-bottom: 10px;
-}
-.labelC {
-    margin-bottom: 5px;
-}
-.boxInput {
-    height: auto;
-    width: 100%;
-    position: relative;
-    input {
-        width: 100%;
-        padding: 10px 0px 10px 10px;
-        border: 1px solid #ccc;
-        outline: none;
-        padding-left: 10px;
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    margin-bottom: 20px;
+
+    .labelInput {
+        font-size: 14px;
+        color: $four_color;
+        margin-bottom: 5px;
     }
-    .boxIcon {
-        position: absolute;
-        top: 12px;
-        right: 0;
-        cursor: pointer;
+
+    .labelInput.errMsg {
+        color: red;
+    }
+    .boxInput {
+        width: 100%;
+        position: relative;
+
+        input {
+            width: 100%;
+            border: 1px solid #e1e1e1;
+            outline: none;
+            padding: 10px 0 10px 10px;
+        }
+
+        input.isErrInput {
+            border: 1px solid red;
+        }
+        .boxIcon {
+            position: absolute;
+            top: 12px;
+            right: 0;
+            cursor: pointer;
+        }
+        .errMsg {
+            font-size: 12px;
+            color: red;
+            margin-top: 3px;
+        }
     }
 }

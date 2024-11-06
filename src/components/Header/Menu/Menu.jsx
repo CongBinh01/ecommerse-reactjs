@@ -14,9 +14,6 @@ function Menu({ content, href }) {
 
     };
 
- 
-
-
     return (
         <div
             className={menu}
