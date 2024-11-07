@@ -35,7 +35,6 @@ function Login() {
     };
     return (
         <div className={container}>
-            <div className={title}>SIGN IN</div>
             <div className={title}>{isRegister ? 'SIGN UP' : 'SIGN IN'}</div>
             <form onSubmit={formik.handleSubmit}>
                 <InputCommon
@@ -62,8 +61,6 @@ function Login() {
                     />
                 )}
 
-            <InputCommon label='Email' type='text' isRequired />
-            <InputCommon label='Password' type='password' isRequired />
                 {!isRegister && (
                     <div className={boxRememberMe}>
                         <input type='checkbox' />
@@ -71,17 +68,12 @@ function Login() {
                     </div>
                 )}
 
-            <div className={boxRememberMe}>
-                <input type='checkbox' />
-                <span>Remember me</span>
-            </div>
                 <Button
                     content={isRegister ? 'REGISTER' : 'LOGIN'}
                     type='submit'
                 />
             </form>
 
-            <Button content={'LOGIN'} />
             <Button
                 content={
                     isRegister
@@ -93,9 +85,9 @@ function Login() {
                 onClick={handleToggle}
             />
 
-            <div className={lostPw}>Lost your password?</div>
             {!isRegister && <div className={lostPw}>Lost your password?</div>}
         </div>
     );
 }
+
 export default Login;

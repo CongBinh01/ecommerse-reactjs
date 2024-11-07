@@ -4,9 +4,6 @@ import { FiEye } from 'react-icons/fi';
 import { FiEyeOff } from 'react-icons/fi';
 import cls from 'classnames';
 
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-
 function InputCommon({ label, type, isRequired = false, ...props }) {
     const { labelInput, boxInput, container, boxIcon, errMsg, isErrInput } =
         styles;

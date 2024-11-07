@@ -1,19 +1,17 @@
-import {createContext, useState} from 'react'
+import { useState } from 'react';
+import { createContext } from 'react';
 
-export const SideBarContext = createContext()
+export const SideBarContext = createContext();
 
-export const SideBarProvider = ({children}) => {
-
-    //tao state luu gia tri true false cua SideBar
+export const SidebarProvider = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [type, setType] = useState('');
+
+    const value = { isOpen, setIsOpen, type, setType };
 
     return (
-        //truyen gia tri isOpen va ham setIsOpen cho cac Component con nhan duoc
-        //Paste qua props value
-        <SideBarContext.Provider
-        value={{isOpen, setIsOpen}}
-        >
+        <SideBarContext.Provider value={value}>
             {children}
         </SideBarContext.Provider>
-    )
-}
+    );
+};
