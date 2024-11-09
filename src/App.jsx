@@ -3,10 +3,12 @@ import routers from '@/routers/routers';
 import { Suspense } from 'react';
 import { SidebarProvider } from '@/contexts/SideBarProvider';
 import SideBar from '@components/Sidebar/Sidebar';
+import { ToastProvider } from '@/contexts/ToastProvider';
 
 function App() {
     return (
-                <SidebarProvider>
+        <ToastProvider>
+             <SidebarProvider>
                     <SideBar />
 
                     <BrowserRouter>
@@ -25,6 +27,7 @@ function App() {
                         </Suspense>
                     </BrowserRouter>
                 </SidebarProvider>
+        </ToastProvider>
     );
 }
 

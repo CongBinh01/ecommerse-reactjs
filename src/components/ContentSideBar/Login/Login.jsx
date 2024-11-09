@@ -3,11 +3,15 @@ import styles from './styles.module.scss';
 import Button from '@components/Button/Button';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ToastContext } from '@/contexts/ToastProvider';
+import { register } from '@/apis/authService';
 
 function Login() {
     const { container, title, boxRememberMe, lostPw } = styles;
     const [isRegister, setIsRegister] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const { toast } = useContext(ToastContext)
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -25,8 +29,20 @@ function Login() {
                 'Passwords must match'
             )
         }),
-        onSubmit: (values) => {
-            console.log(values);
+        onSubmit: async (values) => {
+            if ( isLoading ) return;
+            const {email: username, password} = values;
+
+            setIsLoading(true);
+            if(isRegister){
+                await register({username, password}).then((res) => {
+                    toast.success(res.data.message);
+                    setIsLoading(false);
+                }).catch((err) => {
+                    toast.error(err.reponse.data.message);
+                    setIsLoading(false);
+                });
+            }
         }
     });
     const handleToggle = () => {
@@ -69,7 +85,7 @@ function Login() {
                 )}
 
                 <Button
-                    content={isRegister ? 'REGISTER' : 'LOGIN'}
+                    content={isLoading? 'LOADING...' : isRegister ? 'REGISTER' : 'LOGIN'}
                     type='submit'
                 />
             </form>
