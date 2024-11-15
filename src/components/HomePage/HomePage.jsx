@@ -19,7 +19,6 @@ function HomePage() {
             limit: 10,
             sortType: 0
         };
-
         getProducts(query).then((res) => {
             setListProducts(res.contents);
         });
